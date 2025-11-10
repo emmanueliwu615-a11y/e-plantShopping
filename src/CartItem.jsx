@@ -2,7 +2,18 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, updateQuantity } from './CartSlice';
 import './CartItem.css';
+import { useDispatch } from 'react-redux';
+import { removeItem, updateQuantity } from '../path/to/CartSlice';
 
+const dispatch = useDispatch();
+
+const handleRemove = (name) => {
+  dispatch(removeItem(name));
+};
+
+const handleQuantityChange = (name, newQuantity) => {
+  dispatch(updateQuantity({ name, quantity: newQuantity }));
+};
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
